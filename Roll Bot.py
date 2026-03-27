@@ -19,6 +19,22 @@ async def _(_):
 
 
 
+# 听音乐状态~ 来自khl.py官方文档 纯抄写
+@bot.command()
+async def (msg: Message, music: str, singer: str):  #这里可以固定内容，删除29-30行即可
+    # music name : str
+    # singer name : str
+    # music_software : Enum ['cloudmusic'、'qqmusic'、'kugou'], 'cloudmusic' in default 
+    await bot.client.update_listening_music(music, singer, "cloudmusic")  #cloudmusic遵循上面的规律可以随意更改
+    print(music, singer)
+    await msg.reply(f'开听吧！Music is {music},Singer is {singer}', is_temp=True) #Temp消息 刷新自动消失
+
+
+
+
+
+
+
 @bot.command(name='roll')
 async def rollcard(msg: Message, min: int = 1, max: int = 100, c: int = 1):
     print("The Command 'roll' is run now.")
